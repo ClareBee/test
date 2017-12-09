@@ -7,7 +7,20 @@ var lines = text.split(/[,\. ]+/g);
 var title = "wordcloud";
 var wordcloud = new WordCloud(wordcontainer, title, lines);
 var container = document.getElementById('main-map');
-var mymap = L.map('main-map').setView([51.505, -0.09], 13);
+var mymap = L.map('main-map');
+mymap.locate({setView: true, maxZoom: 16});
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(mymap);
+function onLocationFound(event) {
+    var radius = event.accuracy / 2;
+    L.marker(event.latlng).addTo(mymap)
+        .bindPopup("You are within " + radius + " meters from this point").openPopup();
+
+    L.circle(event.latlng, radius).addTo(mymap);
+}
+mymap.on('locationfound', onLocationFound);
+
 makeRequest(url, requestComplete);
 }
 
@@ -32,4 +45,6 @@ var populateDisplay = function(forecast){
   var temp = document.getElementById("temp-today");
   temp.innerText = `${(forecast[0].max_temp - forecast[0].min_temp)/2}` ;
 }
+
+
 window.addEventListener('load', app);
