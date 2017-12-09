@@ -15,7 +15,7 @@ var WordCloud = function(container, titleText, lines){
     }
     return arr;
   }, []);
-  
+
     var chart = new Highcharts.chart({
       chart: {
         type: "wordcloud",
@@ -25,7 +25,9 @@ var WordCloud = function(container, titleText, lines){
         text: titleText
       },
       series: [{
-        data: seriesData
+        data: seriesData,
+        colorByPoint: true,
+        colors:['#1D84B5', '#34F6F2', '#7D84B2']
       }]
     });
 }

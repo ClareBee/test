@@ -1,26 +1,22 @@
-// var OpenMap = function(container, coords, zoom){
-//   L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-//       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-//   }).addTo(mymap);
-//
-// }
-// OpenMap.prototype.onLocationFound = function(event) {
-//     var radius = event.accuracy / 2;
-//
-//     L.marker(event.latlng).addTo(map)
-//         .bindPopup("You are within " + radius + " meters from this point").openPopup();
-//
-//     L.circle(event.latlng, radius).addTo(map);
-// }
-//
-// mymap.on('locationfound', onLocationFound);
-//
-//
-// OpenMap.prototype.addMarker = function(lat, lng, text){
-//   L.marker([lat, lng]).addTo(mymap)
-//     .bindPopup(text)
-//     .openPopup();
-// }
+var OpenMap = function(container){
+  var mymap = L.map(container);
+  mymap.locate({setView: true, maxZoom: 16});
+  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(mymap);
+  mymap.on('locationfound', function(e) {
+    var radius = e.accuracy / 2;
+    L.marker(e.latlng).addTo(mymap)
+        .bindPopup("You are within " + radius + " meters from this point").openPopup();
+    L.circle(e.latlng, radius).addTo(mymap);
+  });
+}
+
+var addMarker = function(lat, lng, text){
+  L.marker([lat, lng]).addTo(mymap)
+    .bindPopup(text)
+    .openPopup();
+}
 
 
 
