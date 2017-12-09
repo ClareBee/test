@@ -14,20 +14,23 @@
   <script src="app.js"></script>
   <script src="http://code.highcharts.com/highcharts.js"></script>
   <script src="https://code.highcharts.com/modules/wordcloud.js"></script>
-  <script src="mapwrapper.js"></script>
+  <script src="openmap.js"></script>
   <script src="wordcloud.js"></script>
 
   <title>Weather</title>
 </head>
+
 <body>
+
   <header>
     <div class="container">
       <h1>weather</h1>
-      <img src="/britcloud.jpg">
-      <img src="/tea.jpg">
-      <img src="/manumbrella.jpeg">
+      <img id="cloudImage" src="/britcloud.jpg">
+      <img id="teacupImage" src="/tea.jpg">
+      <img id="umbrellaImage" src="/manumbrella.jpeg">
     </div>
   </header>
+
   <main>
     <div>
       <input type="text">
