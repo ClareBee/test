@@ -5,6 +5,7 @@ var MapWrapper = function(container, coords, zoom, title){
     mapTypeId: 'street',
   });
   this.markers = [];
+  this.getLocation();
 }
 
 MapWrapper.prototype.addMarker = function(coords){
