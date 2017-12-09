@@ -61,7 +61,8 @@ var populateWordCloud = function(forecast){
 
 var handleButton = function(forecast, mymap){
   var choice = document.getElementById("city-input").value;
-  var url = "https://www.metaweather.com/api/location/"
+  var url = "https://www.metaweather.com/api/location/" + choice;
+  makeRequest(url, requestComplete);
 }
 
 
