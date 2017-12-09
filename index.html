@@ -34,8 +34,57 @@
   <main>
     <div>
       <input type="text">
-      <div id="main-map"></div>
 
+      <div id="main-map"></div>
+      <p>
+      <label>Choose a global city from this list:
+      <input id="city-input" list="cities"/></label>
+        <datalist id="cities">
+          <option id="19344" value="Edinburgh">
+          <option id="19344" value="London">
+          <option id="19344" value="Dublin">
+          <option id="19344" value="Paris">
+          <option id="19344" value="Madrid">
+          <option id="19344" value="Berlin">
+          <option id="" value="Rome">
+          <option id="" value="Zurich">
+          <option id="" value="Brussels">
+          <option id="" value="Helsinki">
+          <option id="" value="Copenhagen">
+          <option id="" value="Warsaw">
+          <option id="" value="Moscow">
+          <option id="" value="Reykjavik">
+          <option id="" value="New York">
+          <option id="" value="Los Angeles">
+          <option id="" value="Tokyo">
+          <option id="" value="Seoul">
+          <option id="" value="Beijing">
+          <option id="" value="Dubai">
+          <option id="" value="Istanbul">
+          <option id="" value="Johannesburg">
+          <option id="" value="Cairo">
+          <option id="" value="Auckland">
+          <option id="" value="Sydney">
+          <option id="" value="Hong Kong">
+          <option id="" value="Shanghai">
+          <option id="" value="Bangkok">
+          <option id="" value="Singapore">
+          <option id="" value="Saigon">
+          <option id="" value="Mumbai">
+          <option id="" value="New Delhi">
+          <option id="" value="Jakarta">
+          <option id="" value="Rio De Janeiro">
+          <option id="" value="Bogota">
+          <option id="" value="Sao Paolo">
+          <option id="" value="Buenos Aires">
+          <option id="" value="Mexico City">
+          <option id="" value="Kuala Lumpur">
+          <option id="" value="Tel Aviv">
+          <option id="" value="Mumbai">
+          <option id="" value="Delhi">
+          <option id="" value="Jakarta">
+        </datalist>
+      <button id="city-btn">Go!</button>
       <select>
         <option>What's your favourite weather?</option>
         <option>Sunny</option>
@@ -47,6 +96,8 @@
         <option>Snowy</option>
       </select>
   <button>get the weather</button>
+  <h2 id="city-name"></h2>
+  <p id="time"><p>
   <h2 id="weather-today"><h2>
   <p id="temp-today"></p>
   <img id="image-weather-today">
