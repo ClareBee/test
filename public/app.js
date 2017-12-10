@@ -49,6 +49,8 @@ var populateDisplay = function(forecast){
   L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(mymap);
+  var marker = L.marker(coords).addTo(mymap);
+  marker.bindPopup(`Today in ${forecast.title} the weather is: ${selected.weather_state_name.toLowerCase()}`).openPopup();
   var select = document.getElementById("city-input");
   select.addEventListener('change', function(){
     //clears out the container for reuse

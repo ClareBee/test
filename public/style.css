@@ -36,6 +36,11 @@ h2, p {
 	fill: white;
 	text-shadow: 0 0 3px black;
 }
+.leaflet-popup-content-wrapper{
+    background-color: gray;
+    width: 100px;
+    opacity: 0.9;
+}
 
 
 #cloudImage, #teacupImage {
