@@ -9,6 +9,7 @@ var OpenMap = L.Class.extend({
         }).addTo(map);
     },
 
+
 });
 OpenMap.include({
 
@@ -25,12 +26,7 @@ OpenMap.include({
   });
 },
 
-  // movemap: function(coords){
-  //   var lat = coords.split('')[0]
-  //   var long = coords.split('')[1]
-  //   var coords = new L.LatLng(lat, long);
-  //   map.panTo(coords, 13);
-  // }
+
 });
 
 // var OpenMap = function(container){

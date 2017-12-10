@@ -1,6 +1,4 @@
 var app = function(){
-var container = document.getElementById('main-map');
-var mymap = new OpenMap(container, 51.505, -0.09);
 var url = "https://www.metaweather.com/api/location/44418/";
 makeRequest(url, requestComplete);
 }
@@ -18,10 +16,6 @@ var requestComplete = function(){
   var forecast = JSON.parse(jsonString);
   populateDisplay(forecast);
   populateWordCloud(forecast);
-  var select = document.getElementById("city-input");
-  select.addEventListener('change', function(map){
-    handleButton();
-  });
   console.log(forecast);
 };
 
@@ -44,20 +38,36 @@ var populateDisplay = function(forecast){
   country.innerText = forecast.parent.title;
   temp.appendChild(country);
 //should update the map when another http request is run after a new location is selected
-  var map = document.getElementById("main-map");
+  // var lat = forecast.latt_long.split('')[0];
+  // var long = forecast.latt_long.split('')[1];
+  // var coords = new L.L
+  // var container = document.getElementById('main-map');
+  var mymap = L.map('main-map').setView([51.505, -0.09], 13);
+  var location = forecast.latt_long;
+  var lat = location.split(',')[0]
+  var long = location.split(',')[1]
+  console.log(lat);
+  var coords = new L.LatLng(lat, long);
+  console.log(coords);
+  mymap.panTo(coords);
+  var select = document.getElementById("city-input");
+  select.addEventListener('change', function(){
+    mymap.remove();
+    handleButton();
+  }.bind(this));
 //says that this is not a function - the map is just the html element, so how do i change the view?
 //if it try and new it up again, it says 'map container is already initialized'
-//  map.movemap(forecast.latt_long);
+//  mymap.movemap(forecast.latt_long);
 }
 
 var soundChoice = function(forecast){
   var player = document.getElementById("soundcloud");
   var weather = forecast.weather_state_name;
   if(weather.match(/ain/)){
-    weather.href = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/367093184&amp;color=%23dbc3c3&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true";
+    player.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/367093184&amp;color=%23dbc3c3&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true";
   }
   else {
-    weather.href = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/367094636&amp;color=%23dbc3c3&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true";
+    player.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/367094636&amp;color=%23dbc3c3&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true";
   }
 }
 
