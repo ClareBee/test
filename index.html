@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
-    integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
-    crossorigin=""/>
+  integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+  crossorigin=""/>
   <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
-    integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
-    crossorigin=""></script>
+  integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+  crossorigin=""></script>
   <script src="app.js"></script>
   <script src="http://code.highcharts.com/highcharts.js"></script>
   <script src="https://code.highcharts.com/modules/wordcloud.js"></script>
@@ -26,16 +26,16 @@
 
   <header>
     <div class="container" id="title">
-      <img id="cloudImage" src="images/britcloud.jpg">
+      <img id="cloudImage" src="images/britcloud.jpg" alt="cloud">
       <h1 id="maintitle">WeatherChat</h1>
-      <img id="teacupImage" src="images/tea.jpg">
-      <img id="umbrellaImage" src="images/manumbrella.jpeg">
+      <img id="teacupImage" src="images/tea.jpg" alt="teacup">
+      <img id="umbrellaImage" src="images/manumbrella.jpeg" alt"man holding umbrella">
     </div>
   </header>
 
   <main>
     <div id="question-list" class="column">
-        <input id="name" type="text" placeholder="    What's your name?"/>
+      <input id="name" type="text" placeholder="What's your name?"/>
       <select id="preferred-weather">
         <option>What's your favourite weather?</option>
         <option>Sunny</option>
@@ -50,34 +50,34 @@
       <button id="get-weather">Get the forecast!</button>
     </div>
     <div id="greet" class="container">
-  <img id="talking" src="">
+      <img id="talking" src="">
       <h4 id="message"></h4>
 
     </div>
     <div id="display" class="container">
 
       <div id="data">
-        <h3 id="message"></h3>
-      <h1 id="city-name"></h1>
-      <h3 id="country-name"><h3>
-      <p id="time"></p>
-        <h1 id="weather-today"><h1>
-          <p id="temp-max"></p>
-          <p id="temp-min"></p>
-      </div>
-      <div class="container" id="extras">
-        <div>
-          <img id="image-weather-today">
+        <!-- <h3 id="message"></h3> -->
+        <h1 id="city-name"></h1>
+        <h3 id="country-name"><h3>
+          <p id="time"></p>
+          <h1 id="weather-today"><h1>
+            <p id="temp-max"></p>
+            <p id="temp-min"></p>
+          </div>
+          <div class="container" id="extras">
+            <div>
+              <img id="image-weather-today" alt="weather today">
+            </div>
+            <div>
+              <iframe id="soundcloud" width="100" height="100" scrolling="no" frameborder="no" style="" src=""></iframe>
+            </div>
+            <div id="word-cloud"></div>
+          </div>
         </div>
-        <div>
-        <iframe id="soundcloud" width="100" height="100" scrolling="no" frameborder="no" style="" src=""></iframe>
-        </div>
-          <div id="word-cloud"></div>
-      </div>
-    </div>
-    <section id="map">
-    <div id="global-options" class="column">
-      <div id="main-map"></div>
+        <section id="map">
+          <div id="global-options" class="column">
+            <div id="main-map"></div>
             <label id="city-label">Choose a global city from this list:
               <select id="city-input"></label>
                 <option value="">select a city</option>
@@ -106,7 +106,7 @@
                 <option value="2151849">Shanghai</option>
                 <option value="1225448">Bangkok</option>
                 <option value="1252431">Saigon</option>
-                <option value="1047378">Jakarta"</option>
+                <option value="1047378">Jakarta</option>
                 <option value="455825">Rio De Janeiro</option>
                 <option value="368148">Bogota</option>
                 <option value="455827">Sao Paolo</option>
@@ -114,11 +114,11 @@
                 <option value="116545">Mexico City</option>
                 <option value="1154781">Kuala Lumpur</option>
               </select>
-      </div>
-    </section>
-    </main>
-    <footer class= "container">
-      <p id="footer">WeatherChat - powered by MetaWeather, Leaflet, OSM</p>
-    </footer>
-  </body>
+            </div>
+          </section>
+        </main>
+        <footer class= "container">
+          <p id="footer">WeatherChat - powered by MetaWeather, Leaflet, OSM</p>
+        </footer>
+    </body>
 </html>

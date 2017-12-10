@@ -49,7 +49,7 @@ var populateDisplay = function(forecast){
   frame.style.borderRadius = "2px";
   frame.style.padding = "10px";
   greeting.style.fontFamily = 'Archivo Black';
-  greeting.innerText = `Hey, ${user}! \n So, you like ${preference.toLowerCase()} weather? Me too! \n Well, check out today's forecast... \n Then why not scroll down and explore the weather round the world?`;
+  greeting.innerText = `Hey, ${user}! \n So, you like ${preference.toLowerCase()} weather? Me too! \n Check out today's forecast... \n Then scroll down and explore the weather round the world!`;
   var chat = document.getElementById("talking");
   chat.style.display = "inline-block";
   chat.src = "images/talking.jpg";
@@ -70,6 +70,7 @@ var populateDisplay = function(forecast){
 
   var label = document.getElementById('city-label');
   label.style.display = "inline-block";
+  label.style.border = "5px solid #1D84B5";
 
   var country = document.getElementById("country-name");
   country.innerText = forecast.parent.title;
