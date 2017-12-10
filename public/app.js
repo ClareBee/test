@@ -46,7 +46,9 @@ var populateDisplay = function(forecast){
   greeting.style.lineHeight = '2em';
   greeting.style.fontFamily = 'Archivo Black';
   greeting.innerText = `Hey, ${user}! \n So, you like ${preference.toLowerCase()} weather? \n Well, check out today's forecast... \n Then why not scroll down and explore the weather round the world?`;
-
+  var chat = document.getElementById("talking");
+  chat.style.display = "inline-block";
+  chat.src = "images/talking.jpg";
   var city = document.getElementById("city-name");
   var time = document.getElementById("time");
   var weather = document.getElementById("weather-today");
@@ -112,29 +114,29 @@ var imageChoice = function(forecast){
   image.style.display = "block";
   var weather = forecast.weather_state_name;
   console.log(weather);
-  if(weather.match(/ow/) || weather.match(/leet/))
-      {image.src = "/snow.jpg";}
+  if(weather.match(/[^h]ow/) || weather.match(/leet/) || weather.match(/ail/))
+      {image.src = "images/snowing.jpg";}
   else if(weather.match(/ind/)){
-      image.src = "/windy.jpg";
+      image.src = "images/windy.jpg";
   }
   else if(weather.match(/hund/)){
-    image.src = "thunder.jpg";
+    image.src = "images/thunder.jpg";
   }
   else if(weather.match(/[^h]un/)){
-      image.src = "/sun.jpg";
+      image.src = "images/sun.jpg";
   }
   else if(weather.match(/eavy/)){
-      image.src = "/heavyshower.jpg";
+      image.src = "images/heavyshower.jpg";
   }
   else if(weather.match(/loud/)){
-    image.src = "/cloud.jpg";
+    image.src = "images/cloud.jpg";
   }
-  else if(weather.match(/[^h]ain/)){
-       image.src = "/lightrain.jpg";
+  else if(weather.match(/[^h]ain/) || (weather.match(/how/))){
+       image.src = "images/lightrain.jpg";
   }
   else {
     //default image
-      image.src = "/tea.jpg";
+      image.src = "images/tea.jpg";
   }
   //why doesn't this work?
   // switch(weather){
