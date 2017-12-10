@@ -37,11 +37,7 @@ var populateDisplay = function(forecast){
   var country = document.createElement('ul');
   country.innerText = forecast.parent.title;
   temp.appendChild(country);
-//should update the map when another http request is run after a new location is selected
-  // var lat = forecast.latt_long.split('')[0];
-  // var long = forecast.latt_long.split('')[1];
-  // var coords = new L.L
-  // var container = document.getElementById('main-map');
+
   var mymap = L.map('main-map').setView([51.505, -0.09], 13);
   var location = forecast.latt_long;
   var lat = location.split(',')[0]
@@ -55,12 +51,10 @@ var populateDisplay = function(forecast){
   }).addTo(mymap);
   var select = document.getElementById("city-input");
   select.addEventListener('change', function(){
+    //clears out the container for reuse
     mymap.remove();
     handleButton();
   }.bind(this));
-//says that this is not a function - the map is just the html element, so how do i change the view?
-//if it try and new it up again, it says 'map container is already initialized'
-//  mymap.movemap(forecast.latt_long);
 }
 
 var soundChoice = function(forecast){
