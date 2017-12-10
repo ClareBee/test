@@ -1,7 +1,7 @@
 var app = function(){
 
 
-// var preference = document.getElementById('')
+
 var btn = document.getElementById('get-weather');
 
 btn.addEventListener('click', function(){
