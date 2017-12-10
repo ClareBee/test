@@ -29,6 +29,7 @@ var WordCloud = function(container, titleText, lines, colorRange){
       title: {
         text: titleText
       },
+      tooltip: { enabled: false },
       credits: {
       enabled: false
       },
