@@ -43,13 +43,13 @@ var populateDisplay = function(forecast){
   var preference = localStorage.getItem('weather');
   var greeting = document.getElementById('message');
   greeting.style.color = "#545456";
-  greeting.style.lineHeight = '2em';
+  greeting.style.lineHeight = '1.5em';
   var frame = document.getElementById('greet');
   frame.style.border = "3px solid black";
   frame.style.borderRadius = "2px";
   frame.style.padding = "10px";
   greeting.style.fontFamily = 'Archivo Black';
-  greeting.innerText = `Hey, ${user}! \n So, you like ${preference.toLowerCase()} weather? Me too! \n Check out today's forecast... \n Then scroll down and explore the weather round the world!`;
+  greeting.innerText = `Hey, ${user}! \n So, you like ${preference.toLowerCase()} weather? Me too! \n \n Check out today's forecast... \n Then scroll down and explore weather around the world!`;
   var chat = document.getElementById("talking");
   chat.style.display = "inline-block";
   chat.src = "images/talking.jpg";
@@ -106,16 +106,16 @@ var soundChoice = function(forecast){
   var player = document.getElementById("soundcloud");
   var weather = forecast.weather_state_name;
   if(weather.match(/ain/) || weather.match(/leet/) || weather.match(/how/) || weather.match(/ail/)){
-    player.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/367093184&amp;color=%23dbc3c3&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false";
+    player.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/367093184&amp;color=%231D84B5&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false";
   }
   else if(weather.match(/hunder/) || weather.match(/torm/)){
-    player.src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/367094444&amp;color=%23dbc3c3&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false";
+    player.src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/367094444&amp;color=%231D84B5&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false";
   }
   else if(weather.match(/ind/) || weather.match(/oud/)){
-    player.src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/367657091&amp;color=%23dbc3c3&amp;auto_play=false&amp;hide_related=false&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false";
+    player.src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/367657091&amp;color=%231D84B5&amp;auto_play=false&amp;hide_related=false&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false";
   }
   else {
-    player.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/367094636&amp;color=%23dbc3c3&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false";
+    player.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/367094636&amp;color=%231D84B5&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false";
   }
 }
 

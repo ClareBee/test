@@ -6,6 +6,7 @@ header, h1, button {
 #image-weather-today {
   display: none;
   border-style: none;
+  width: 130px;
 }
 
 #preferred-weather {
@@ -68,6 +69,7 @@ button {
   text-decoration-color: #FED766;
   background-color:  #FED766;
   border-radius: 3px;
+  font-size: 45px;
 }
 
 #weather-today {
@@ -99,10 +101,10 @@ h2, h3, h4, p, select, label {
 #data{
   padding-left: 50px;
 }
-#image-weather-today {
-  width: 150px;
-  height: 150px;
 
+#image-weather-today {
+  width: 180px;
+  height: 180px;
 }
 
 #word-cloud {
@@ -119,7 +121,7 @@ h2, h3, h4, p, select, label {
 
 #sound-cloud {
   margin-left: 80px;
-  margin-top: 20px;
+  margin-top: 50px;
 }
 
 
