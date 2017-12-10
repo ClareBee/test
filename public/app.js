@@ -1,11 +1,6 @@
 var app = function(){
 var container = document.getElementById('main-map');
-var mymap = new OpenMap(container);
-var select = document.getElementById("city-input");
-select.addEventListener('change', function(mymap){
-  handleButton();
-  mymap.moveMap();
-});
+var mymap = new OpenMap(container, 51.505, -0.09);
 var url = "https://www.metaweather.com/api/location/44418/";
 makeRequest(url, requestComplete);
 }
@@ -23,6 +18,10 @@ var requestComplete = function(){
   var forecast = JSON.parse(jsonString);
   populateDisplay(forecast);
   populateWordCloud(forecast);
+  var select = document.getElementById("city-input");
+  select.addEventListener('change', function(map){
+    handleButton();
+  });
   console.log(forecast);
 };
 
@@ -39,8 +38,9 @@ var populateDisplay = function(forecast){
   imageChoice(selected);
   var country = document.createElement('ul');
   country.innerText = forecast.parent.title;
-
   temp.appendChild(country);
+  var map = document.getElementById("main-map");
+  map.movemap(forecast.latt_long);
 }
 
 var imageChoice = function(forecast){
@@ -49,13 +49,13 @@ var imageChoice = function(forecast){
   console.log(weather);
   if(weather.match(/ow/))
       {image.src = "/snow.jpg";}
-  else if(weather.match(/ind)/)){
+  else if(weather.match(/ind/)){
       image.src = "/windy.jpg";
   }
-  else if(weather.match(/un)/)){
+  else if(weather.match(/un/)){
       image.src = "/sun.jpg";
   }
-  else if(weather.match(/eavy)/)){
+  else if(weather.match(/eavy/)){
       image.src = "/heavyshower.jpg";
   }
   else if(weather.match(/[^h]ain/)){
