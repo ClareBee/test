@@ -103,6 +103,12 @@ var soundChoice = function(forecast){
   if(weather.match(/ain/) || (weather.match(/leet/)) || (weather.match(/how/))){
     player.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/367093184&amp;color=%23dbc3c3&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false";
   }
+  else if(weather.match(/hunder/) || weather.match(/torm/)){
+    player.src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/367094444&amp;color=%23dbc3c3&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false";
+  }
+  else if(weather.match(/ind/)) || (weather.match(/oud/)){
+    player.src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/367661486&amp;color=%23dbc3c3&amp;auto_play=false&amp;hide_related=true&amp;show_comments=flase&amp;show_user=false&amp;show_reposts=false&amp;show_teaser=true&amp;visual=false"; 
+  }
   else {
     player.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/367094636&amp;color=%23dbc3c3&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false";
   }
