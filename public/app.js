@@ -64,6 +64,9 @@ var imageChoice = function(forecast){
   else if(weather.match(/eavy/)){
       image.src = "/heavyshower.jpg";
   }
+  else if(weather.match(/loud/)){
+    image.src = "/cloud.jpg";
+  }
   else if(weather.match(/[^h]ain/)){
        image.src = "/lightrain.jpg";
   }
