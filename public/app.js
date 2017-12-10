@@ -1,8 +1,11 @@
 var app = function(){
-  var container = document.getElementById('main-map');
-  var mymap = new OpenMap(container);
+var container = document.getElementById('main-map');
+var mymap = new OpenMap(container);
 var select = document.getElementById("city-input");
-select.addEventListener('change', handleButton);
+select.addEventListener('change', function(mymap){
+  handleButton();
+  mymap.moveMap();
+});
 var url = "https://www.metaweather.com/api/location/44418/";
 makeRequest(url, requestComplete);
 }
@@ -42,9 +45,41 @@ var populateDisplay = function(forecast){
 
 var imageChoice = function(forecast){
   var image = document.getElementById("image-weather-today");
-  if(forecast.weather_state_name.includes("windy")){
-    image.src = url('windy.jpg');
+  var weather = forecast.weather_state_name;
+  console.log(weather);
+  if(weather.match(/ow/))
+      {image.src = "/snow.jpg";}
+  else if(weather.match(/ind)/)){
+      image.src = "/windy.jpg";
   }
+  else if(weather.match(/un)/)){
+      image.src = "/sun.jpg";
+  }
+  else if(weather.match(/eavy)/)){
+      image.src = "/heavyshower.jpg";
+  }
+  else if(weather.match(/[^h]ain/)){
+       image.src = "/lightrain.jpg";
+  }
+  else {
+      image.src = "/tea.jpg";
+  }
+  // switch(weather){
+  // case (weather.match(/ind/))
+  //     image.src = "/windy.jpg";
+  //     break;
+  // case weather.match(/eavy/):
+  //     image.src = "/heavyshower.jpg";
+  //     break;
+  // case weather.match(/[^h]ain/):
+  //     image.src = "/lightrain.jpg";
+  // case weather.match(/now/):
+  //     image.src = "/snow.jpg";
+  //     break;
+  // case weather.match(/un/):
+  //     image.src = "/sun.jpg";
+  //     break;
+  //   }
 }
 
 var populateWordCloud = function(forecast){
