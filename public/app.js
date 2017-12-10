@@ -41,8 +41,8 @@ var populateDisplay = function(forecast){
   var country = document.getElementById("country-name");
   country.innerText = forecast.parent.title;
 
+  var mymap = L.map('main-map').setView([0.00, 0.00], 13);
 
-  var mymap = L.map('main-map').setView([51.505, -0.09], 13);
   var location = forecast.latt_long;
   var lat = location.split(',')[0]
   var long = location.split(',')[1]
@@ -127,7 +127,7 @@ var populateWordCloud = function(forecast){
   var wordcontainer = document.querySelector("#word-cloud");
   var title = "";
   var colorRange = [];
-  if(forecast.consolidated_weather[0].weather_state_name.match(/[^h]/un/)){
+  if(forecast.consolidated_weather[0].weather_state_name.match(/[^h]un/)){
       colorRange = ['#FDB833', '#FED766', '#FE5F55'];
   } else {
     colorRange = ['#1D84B5', '#34F6F2', '#7D84B2'];
@@ -143,9 +143,6 @@ var handleButton = function(){
   var url = "https://www.metaweather.com/api/location/" + citycode + "/";
   makeRequest(url, requestComplete);
 }
-
-
-
 
 
 window.addEventListener('load', app);
