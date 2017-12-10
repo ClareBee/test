@@ -7,6 +7,10 @@ header, h1, button {
   display: none;
   border-style: none;
 }
+
+#preferred-weather {
+  font-size: 20px;
+}
 #talking {
   display: none;
   width: 80px;
@@ -22,6 +26,12 @@ body {
 }
 #maintitle {
   font-size: 50px;
+}
+#name {
+  margin: 15px;
+  font-size: 20px;
+  font-family: 'Open sans', sans-serif;
+  border-radius: 2px;
 }
 #city-label {
   display: none;
@@ -48,6 +58,7 @@ button {
   text-decoration: underline;
   text-decoration-color: #FED766;
   background-color:  #FED766;
+  border-radius: 3px;
 }
 
 #weather-today {
