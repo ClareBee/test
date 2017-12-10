@@ -12,6 +12,7 @@ var WordCloud = function(container, titleText, lines){
             weight: 1
         };
         arr.push(obj);
+        arr.push(obj);
     }
     return arr;
   }, []);

@@ -45,7 +45,7 @@ var populateDisplay = function(forecast){
   console.log(lat);
   var coords = new L.LatLng(lat, long);
   console.log(coords);
-  mymap.setView(coords, 13);
+  mymap.flyTo(coords, 13);
   L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(mymap);
@@ -128,7 +128,7 @@ var populateWordCloud = function(forecast){
 var handleButton = function(){
   var choice = document.getElementById("city-input");
   console.log(choice);
-  var citycode = choice.options[choice.selectedIndex].id;
+  var citycode = choice.options[choice.selectedIndex].value;
   console.log(citycode);
   var url = "https://www.metaweather.com/api/location/" + citycode + "/";
   makeRequest(url, requestComplete);
