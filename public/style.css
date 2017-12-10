@@ -10,6 +10,7 @@ header, h1, button {
 
 #preferred-weather {
   font-size: 20px;
+  margin-bottom: 25px;
 }
 #talking {
   display: none;
@@ -49,9 +50,12 @@ body {
   margin-bottom: 25px;
 }
 button {
-  color: #1D84B5;
+  color: white;
   padding: 10px;
   margin: 10px;
+  font-size: 20px;
+  background-color: #1D84B5;
+  text-shadow: 3px 2px black;
 }
 
 #city-name {
@@ -70,7 +74,7 @@ button:hover {
   background-color: #FED766;
 }
 
-h2, p, select, label {
+h2, h3, h4, p, select, label {
   font-family: 'Open Sans', sans-serif;
 }
 .container {
@@ -110,7 +114,9 @@ h2, p, select, label {
 
 #sound-cloud {
   margin-left: 80px;
+  margin-top: 20px;
 }
+
 
 .visualAudible__body {
   color: white;
@@ -120,11 +126,16 @@ h2, p, select, label {
 .container#extras {
   width: 80%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: row;
   align-items: flex-start;
 }
-
+.container#display {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+}
 
 .highcharts-tooltip-box {
 	fill: white;
@@ -144,8 +155,8 @@ h2, p, select, label {
 
 
 #cloudImage {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   margin-right: 20px;
 }
 

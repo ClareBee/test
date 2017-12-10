@@ -49,7 +49,7 @@ var populateDisplay = function(forecast){
   frame.style.borderRadius = "2px";
   frame.style.padding = "10px";
   greeting.style.fontFamily = 'Archivo Black';
-  greeting.innerText = `Hey, ${user}! \n So, you like ${preference.toLowerCase()} weather? \n Well, check out today's forecast... \n Then why not scroll down and explore the weather round the world?`;
+  greeting.innerText = `Hey, ${user}! \n So, you like ${preference.toLowerCase()} weather? Me too! \n Well, check out today's forecast... \n Then why not scroll down and explore the weather round the world?`;
   var chat = document.getElementById("talking");
   chat.style.display = "inline-block";
   chat.src = "images/talking.jpg";
@@ -111,7 +111,7 @@ var soundChoice = function(forecast){
     player.src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/367094444&amp;color=%23dbc3c3&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false";
   }
   else if(weather.match(/ind/) || weather.match(/oud/)){
-    player.src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/367661486&amp;color=%23dbc3c3&amp;auto_play=false&amp;hide_related=true&amp;show_comments=flase&amp;show_user=false&amp;show_reposts=false&amp;show_teaser=true&amp;visual=false";
+    player.src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/367657091&amp;color=%23dbc3c3&amp;auto_play=false&amp;hide_related=false&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false";
   }
   else {
     player.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/367094636&amp;color=%23dbc3c3&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false";
@@ -135,11 +135,11 @@ var imageChoice = function(forecast){
   else if(weather.match(/[^h]un/)){
       image.src = "images/sun.jpg";
   }
-  else if(weather.match(/eavy/)){
-      image.src = "images/heavyshower.jpg";
-  }
   else if(weather.match(/loud/)){
     image.src = "images/cloud.jpg";
+  }
+  else if(weather.match(/eavy[^c]/)){
+      image.src = "images/heavyshower.jpg";
   }
   else if(weather.match(/[^h]ain/) || (weather.match(/how/))){
        image.src = "images/lightrain.jpg";
