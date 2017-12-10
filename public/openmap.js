@@ -1,6 +1,6 @@
-var OpenMap = function(container){
-  var mymap = L.map(container);
-  mymap.locate({setView: true, maxZoom: 16});
+var OpenMap = function(container, latlng){
+  var mymap = L.map(container, latlng);
+  mymap.locate({setView: [latlng], maxZoom: 16});
   L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(mymap);
@@ -12,8 +12,14 @@ var OpenMap = function(container){
   });
 }
 
-OpenMap.prototype.addMarker = function(lat, lng, text){
+OpenMap.prototype.addMarker = function(lat, lng, text, mymap){
   L.marker([lat, lng]).addTo(mymap)
     .bindPopup(text)
     .openPopup();
 }
+
+// OpenMap.prototype.moveMap = function(location){
+//   var latlong = location.latt_long;
+//   console.log(latlong);
+//   L.setView([latlong], 13);
+// }

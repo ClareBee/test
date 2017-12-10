@@ -1,7 +1,8 @@
 var app = function(){
-
-var container = document.getElementById('main-map');
-var mymap = new OpenMap(container);
+  var container = document.getElementById('main-map');
+  var mymap = new OpenMap(container);
+var select = document.getElementById("city-input");
+select.addEventListener('change', handleButton);
 var url = "https://www.metaweather.com/api/location/44418/";
 makeRequest(url, requestComplete);
 }
@@ -19,10 +20,6 @@ var requestComplete = function(){
   var forecast = JSON.parse(jsonString);
   populateDisplay(forecast);
   populateWordCloud(forecast);
-  var button = document.getElementById("city-btn");
-  button.addEventListener('click', function(){
-      handleButton(forecast, mymap);
-}.bind(this));
   console.log(forecast);
 };
 
@@ -39,6 +36,7 @@ var populateDisplay = function(forecast){
   imageChoice(selected);
   var country = document.createElement('ul');
   country.innerText = forecast.parent.title;
+
   temp.appendChild(country);
 }
 
@@ -59,9 +57,12 @@ var populateWordCloud = function(forecast){
   var wordcloud = new WordCloud(wordcontainer, title, forecastString);
   }
 
-var handleButton = function(forecast, mymap){
-  var choice = document.getElementById("city-input").value;
-  var url = "https://www.metaweather.com/api/location/" + choice;
+var handleButton = function(){
+  var choice = document.getElementById("city-input");
+  console.log(choice);
+  var citycode = choice.options[choice.selectedIndex].id;
+  console.log(citycode);
+  var url = "https://www.metaweather.com/api/location/" + citycode + "/";
   makeRequest(url, requestComplete);
 }
 
