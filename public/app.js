@@ -38,6 +38,7 @@ var populateDisplay = function(forecast){
   temp.innerText = `${selected.max_temp.toFixed(2)} \u2103 max, ${selected.min_temp.toFixed(2)} \u2103 min`;
 
   imageChoice(selected);
+  soundChoice(selected);
 
   var country = document.createElement('ul');
   country.innerText = forecast.parent.title;
@@ -48,6 +49,18 @@ var populateDisplay = function(forecast){
 //if it try and new it up again, it says 'map container is already initialized'
 //  map.movemap(forecast.latt_long);
 }
+
+var soundChoice = function(forecast){
+  var player = document.getElementById("soundcloud");
+  var weather = forecast.weather_state_name;
+  if(weather.match(/ain/)){
+    weather.href = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/367093184&amp;color=%23dbc3c3&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true";
+  }
+  else {
+    weather.href = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/367094636&amp;color=%23dbc3c3&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true";
+  }
+}
+
 
 var imageChoice = function(forecast){
   var image = document.getElementById("image-weather-today");
@@ -74,8 +87,9 @@ var imageChoice = function(forecast){
     //default image
       image.src = "/tea.jpg";
   }
+  //why doesn't this work?
   // switch(weather){
-  // case (weather.match(/ind/))
+  // case (weather.match(/ind/):
   //     image.src = "/windy.jpg";
   //     break;
   // case weather.match(/eavy/):
