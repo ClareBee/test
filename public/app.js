@@ -1,6 +1,10 @@
 var app = function(){
-var url = "https://www.metaweather.com/api/location/44418/";
-makeRequest(url, requestComplete);
+var btn = document.getElementById('get-weather');
+btn.addEventListener('click', function(){
+  var url = "https://www.metaweather.com/api/location/21125/";
+  makeRequest(url, requestComplete);
+  }.bind(this)
+  );
 }
 
 var makeRequest = function(url, callback){
@@ -34,9 +38,9 @@ var populateDisplay = function(forecast){
   imageChoice(selected);
   soundChoice(selected);
 
-  var country = document.createElement('ul');
+  var country = document.getElementById("country-name");
   country.innerText = forecast.parent.title;
-  temp.appendChild(country);
+  
 
   var mymap = L.map('main-map').setView([51.505, -0.09], 13);
   var location = forecast.latt_long;
@@ -62,7 +66,7 @@ var populateDisplay = function(forecast){
 var soundChoice = function(forecast){
   var player = document.getElementById("soundcloud");
   var weather = forecast.weather_state_name;
-  if(weather.match(/ain/)){
+  if(weather.match(/ain/) || (weather.match(/leet/)) || (weather.match(/how/))){
     player.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/367093184&amp;color=%23dbc3c3&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true";
   }
   else {
@@ -121,7 +125,7 @@ var populateWordCloud = function(forecast){
     forecastString.push(result.weather_state_name);
   });
   var wordcontainer = document.querySelector("#word-cloud");
-  var title = "wordcloud";
+  var title = "";
   var wordcloud = new WordCloud(wordcontainer, title, forecastString);
   }
 

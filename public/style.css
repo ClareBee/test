@@ -4,6 +4,12 @@ header, h1 {
   font-family: 'Archivo Black', sans-serif;
 }
 
+#title {
+  border: 10px solid #1D84B5;
+  border-radius: 8px;
+  padding: 10px;
+}
+
 h2, p {
   font-family: 'Open Sans', sans-serif;
 }
@@ -14,13 +20,15 @@ h2, p {
   align-items: flex-end;
 }
 
-#display {
-  display: none;
+#image-weather-today {
+  width: 100px;
+  height: 100px;
+
 }
 
 #word-cloud {
 	min-width: 310px;
-	max-width: 800px;
+	max-width: 600px;
 	margin: 0 auto;
 }
 
