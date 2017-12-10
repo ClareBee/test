@@ -34,7 +34,7 @@
   </header>
 
   <main>
-    <div>
+    <div id="question-list" class="column">
       <select>
         <option>What's your favourite weather?</option>
         <option>Sunny</option>
@@ -47,19 +47,29 @@
       </select>
       <button id="get-weather">Get the weather</button>
     </div>
-    <div id="display">
+
+    <div id="display" class="container">
+
+      <div>
       <h2 id="city-name"></h2>
       <h3 id="country-name"><h3>
-      <p id="time"><p>
+      <p id="time"></p>
         <h2 id="weather-today"><h2>
           <p id="temp-today"></p>
+      </div>
+      <div class="container" id="extras">
+        <div>
           <img id="image-weather-today">
-          <div id="word-cloud"></div>
-          <iframe id="soundcloud" width="100" height="100" scrolling="no" frameborder="no" style="" src=""></iframe>
-          <hr />
-          <div id="main-map"></div>
-          <div id="second-map"></div>
-          <p>
+        </div>
+        <div id="word-cloud"></div>
+        <div>
+        <iframe id="soundcloud" width="100" height="100" scrolling="no" frameborder="no" style="" src=""></iframe>
+        </div>
+      </div>
+    </div>
+    <section id="map">
+    <div id="global-options" class="column">
+      <div id="main-map"></div>
             <label>Choose a global city from this list:
               <select id="city-input"></label>
                 <option value="">select a city</option>
@@ -101,12 +111,10 @@
                 <option value="1154781">Kuala Lumpur</option>
                 <option value="1968212">Tel Aviv</option>
               </select>
-
-
-            </div>
-          </main>
-          <footer>
-
-          </footer>
-        </body>
+      </div>
+    </section>
+    </main>
+    <footer>
+    </footer>
+  </body>
 </html>

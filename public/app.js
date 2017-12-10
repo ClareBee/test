@@ -127,7 +127,7 @@ var populateWordCloud = function(forecast){
   var wordcontainer = document.querySelector("#word-cloud");
   var title = "";
   var colorRange = [];
-  if(forecast.consolidated_weather[0].weather_state_name.match(/un/)){
+  if(forecast.consolidated_weather[0].weather_state_name.match(/[^h]/un/)){
       colorRange = ['#FDB833', '#FED766', '#FE5F55'];
   } else {
     colorRange = ['#1D84B5', '#34F6F2', '#7D84B2'];
