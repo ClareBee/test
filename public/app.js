@@ -1,6 +1,18 @@
 var app = function(){
+
+
+// var preference = document.getElementById('')
 var btn = document.getElementById('get-weather');
+
 btn.addEventListener('click', function(){
+
+  var user = document.getElementById('name').value;
+  localStorage.setItem('userName', user);
+  var preferred = document.getElementById("preferred-weather");
+  var chosen = preferred.options[preferred.selectedIndex].value;
+  localStorage.setItem('weather', chosen);
+  var list = document.getElementById('question-list');
+  list.style.display = "none";
   var url = "https://www.metaweather.com/api/location/21125/";
   makeRequest(url, requestComplete);
   }.bind(this)
@@ -27,7 +39,13 @@ var requestComplete = function(){
 };
 
 var populateDisplay = function(forecast){
-  var message = document.getElementById("")
+  var user = localStorage.getItem('userName');
+  var preference = localStorage.getItem('weather');
+  var greeting = document.getElementById('message');
+  greeting.style.color = "#545456";
+  greeting.style.lineHeight = '2em';
+  greeting.style.fontFamily = 'Archivo Black';
+  greeting.innerText = `Hey, ${user}! \n So, you like ${preference.toLowerCase()} weather? \n Well, check out today's forecast... \n Then why not scroll down and explore the weather round the world?`;
 
   var city = document.getElementById("city-name");
   var time = document.getElementById("time");

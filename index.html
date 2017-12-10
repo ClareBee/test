@@ -35,22 +35,27 @@
 
   <main>
     <div id="question-list" class="column">
+        <input id="name" type="text" placeholder="What's your name?"/>
       <select id="preferred-weather">
         <option>What's your favourite weather?</option>
         <option>Sunny</option>
         <option>Cloudy</option>
-        <option>Sunshine and Showers</option>
+        <option>Sunshine and Showery</option>
         <option>Bright and breezy</option>
         <option>Rainy</option>
+        <option>Windy</option>
         <option>Stormy</option>
         <option>Snowy</option>
       </select>
       <button id="get-weather">Get the weather</button>
     </div>
-
+    <div id="greet">
+      <h4 id="message"></h4>
+    </div>
     <div id="display" class="container">
 
       <div id="data">
+        <h3 id="message"></h3>
       <h1 id="city-name"></h1>
       <h3 id="country-name"><h3>
       <p id="time"></p>
