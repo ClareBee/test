@@ -1,13 +1,53 @@
 @import 'https://code.highcharts.com/css/highcharts.css';
 
-header, h1 {
+header, h1, button {
   font-family: 'Archivo Black', sans-serif;
 }
+#image-weather-today {
+  display: none;
+  border-style: none;
+}
 
+body {
+  margin-top: 10px;
+}
+#maintitle {
+  font-size: 50px;
+}
+#city-label {
+  display: none;
+  padding: 25px;
+}
 #title {
   border-top: 10px solid #1D84B5;
   border-bottom: 10px solid #1D84B5;
-  border-radius: 8px;
+}
+#footer {
+  color: #E6E6EA;
+}
+#question-list{
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+button {
+  color: #1D84B5;
+  padding: 10px;
+  margin: 10px;
+}
+
+#city-name {
+  text-decoration: underline;
+  text-decoration-color: #FED766;
+  background-color:  #FED766;
+}
+
+#weather-today {
+  text-decoration: underline;
+  text-decoration-color: #1D84B5;
+}
+
+button:hover {
+  background-color: #FED766;
 }
 
 h2, p, select, label {
@@ -27,6 +67,9 @@ h2, p, select, label {
   align-items: center;
 }
 
+#data{
+  padding-left: 50px;
+}
 #image-weather-today {
   width: 100px;
   height: 100px;
@@ -34,19 +77,24 @@ h2, p, select, label {
 }
 
 #word-cloud {
-	min-width: 150px;
+	min-width: 200px;
 	max-width: 300px;
   height: 300px;
 	margin: 0 auto;
 }
 
 #main-map {
-  height: 250px;
-  width: 250px;
+  height: 300px;
+  width: 300px;
 }
 
 #sound-cloud {
   margin-left: 80px;
+}
+
+.visualAudible__body {
+  color: white;
+  background-color: white;
 }
 
 .container#extras {
@@ -54,7 +102,7 @@ h2, p, select, label {
   display: flex;
   justify-content: center;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
 }
 
 
@@ -75,7 +123,15 @@ h2, p, select, label {
 }
 
 
-#cloudImage, #teacupImage {
+#cloudImage {
   width: 100px;
   height: 100px;
+  margin-right: 20px;
+}
+
+#teacupImage {
+  width: 100px;
+  height: 100px;
+  margin-right: 15px;
+  margin-left: 20px;
 }

@@ -27,7 +27,7 @@
   <header>
     <div class="container" id="title">
       <img id="cloudImage" src="/britcloud.jpg">
-      <h1>WeatherChat</h1>
+      <h1 id="maintitle">WeatherChat</h1>
       <img id="teacupImage" src="/tea.jpg">
       <img id="umbrellaImage" src="/manumbrella.jpeg">
     </div>
@@ -35,7 +35,7 @@
 
   <main>
     <div id="question-list" class="column">
-      <select>
+      <select id="preferred-weather">
         <option>What's your favourite weather?</option>
         <option>Sunny</option>
         <option>Cloudy</option>
@@ -50,27 +50,28 @@
 
     <div id="display" class="container">
 
-      <div>
-      <h2 id="city-name"></h2>
+      <div id="data">
+      <h1 id="city-name"></h1>
       <h3 id="country-name"><h3>
       <p id="time"></p>
-        <h2 id="weather-today"><h2>
-          <p id="temp-today"></p>
+        <h1 id="weather-today"><h1>
+          <p id="temp-max"></p>
+          <p id="temp-min"></p>
       </div>
       <div class="container" id="extras">
         <div>
           <img id="image-weather-today">
         </div>
-        <div id="word-cloud"></div>
         <div>
         <iframe id="soundcloud" width="100" height="100" scrolling="no" frameborder="no" style="" src=""></iframe>
         </div>
+          <div id="word-cloud"></div>
       </div>
     </div>
     <section id="map">
     <div id="global-options" class="column">
       <div id="main-map"></div>
-            <label>Choose a global city from this list:
+            <label id="city-label">Choose a global city from this list:
               <select id="city-input"></label>
                 <option value="">select a city</option>
                 <option value="19344">Edinburgh</option>
@@ -83,7 +84,6 @@
                 <option value="554890">Copenhagen</option>
                 <option value="523920">Warsaw</option>
                 <option value="2122265">Moscow</option>
-                <option value="980389">Reykjavik</option>
                 <option value="2459115">New York</option>
                 <option value="2442047">Los Angeles</option>
                 <option value="1118370">Tokyo</option>
@@ -98,9 +98,7 @@
                 <option value="24865698">Hong Kong</option>
                 <option value="2151849">Shanghai</option>
                 <option value="1225448">Bangkok</option>
-                <option value="23424948">Singapore</option>
                 <option value="1252431">Saigon</option>
-                <option value="2295411">Mumbai</option>
                 <option value="2295019">New Delhi</option>
                 <option value="1047378">Jakarta"</option>
                 <option value="455825">Rio De Janeiro</option>/option>
@@ -109,12 +107,12 @@
                 <option value="468739">Buenos Aires</option>
                 <option value="116545">Mexico City</option>
                 <option value="1154781">Kuala Lumpur</option>
-                <option value="1968212">Tel Aviv</option>
               </select>
       </div>
     </section>
     </main>
-    <footer>
+    <footer class= "container">
+      <p id="footer">WeatherChat - powered by MetaWeather, Leaflet, OSM</p>
     </footer>
   </body>
 </html>

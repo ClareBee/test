@@ -5,6 +5,9 @@ btn.addEventListener('click', function(){
   makeRequest(url, requestComplete);
   }.bind(this)
   );
+  window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+}
 }
 
 var makeRequest = function(url, callback){
@@ -24,32 +27,43 @@ var requestComplete = function(){
 };
 
 var populateDisplay = function(forecast){
+  var message = document.getElementById("")
+
   var city = document.getElementById("city-name");
   var time = document.getElementById("time");
   var weather = document.getElementById("weather-today");
   var selected = forecast.consolidated_weather[0];
-  var temp = document.getElementById("temp-today");
+  var tempmax = document.getElementById("temp-max");
+  var tempmin = document.getElementById("temp-min");
 
   city.innerText = forecast.title;
   time.innerText = forecast.time;
   weather.innerText = selected.weather_state_name;
-  temp.innerText = `${selected.max_temp.toFixed(2)} \u2103 max, ${selected.min_temp.toFixed(2)} \u2103 min`;
+  tempmax.innerText = `${selected.max_temp.toFixed(2)} \u2103 max`; tempmin.innerText = `${selected.min_temp.toFixed(2)} \u2103 min`;
 
   imageChoice(selected);
   soundChoice(selected);
 
+  var label = document.getElementById('city-label');
+  label.style.display = "inline-block";
+
   var country = document.getElementById("country-name");
   country.innerText = forecast.parent.title;
-
-  var mymap = L.map('main-map').setView([0.00, 0.00], 13);
-
+  var mapContainer = document.getElementById("main-map");
+  mapContainer.style.border = "10px solid  #FED766";
+  mapContainer.style.borderRadius = "8px";
+  var mymap = L.map(mapContainer).setView([54.0730, 2.2898], 15);
+  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(mymap);
   var location = forecast.latt_long;
   var lat = location.split(',')[0]
   var long = location.split(',')[1]
   console.log(lat);
   var coords = new L.LatLng(lat, long);
   console.log(coords);
-  mymap.flyTo(coords, 13);
+  //i want to use flyTo(coords)
+  mymap.panTo(coords);
   L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(mymap);
@@ -67,16 +81,17 @@ var soundChoice = function(forecast){
   var player = document.getElementById("soundcloud");
   var weather = forecast.weather_state_name;
   if(weather.match(/ain/) || (weather.match(/leet/)) || (weather.match(/how/))){
-    player.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/367093184&amp;color=%23dbc3c3&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true";
+    player.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/367093184&amp;color=%23dbc3c3&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false";
   }
   else {
-    player.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/367094636&amp;color=%23dbc3c3&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true";
+    player.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/367094636&amp;color=%23dbc3c3&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;show_teaser=false&amp;visual=false";
   }
 }
 
 
 var imageChoice = function(forecast){
   var image = document.getElementById("image-weather-today");
+  image.style.display = "block";
   var weather = forecast.weather_state_name;
   console.log(weather);
   if(weather.match(/ow/) || weather.match(/leet/))
@@ -84,7 +99,10 @@ var imageChoice = function(forecast){
   else if(weather.match(/ind/)){
       image.src = "/windy.jpg";
   }
-  else if(weather.match(/un/)){
+  else if(weather.match(/hund/)){
+    image.src = "thunder.jpg";
+  }
+  else if(weather.match(/[^h]un/)){
       image.src = "/sun.jpg";
   }
   else if(weather.match(/eavy/)){

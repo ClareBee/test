@@ -13,6 +13,7 @@ var WordCloud = function(container, titleText, lines, colorRange){
         };
         arr.push(obj);
         arr.push(obj);
+        arr.push(obj);
     }
     return arr;
   }, []);
@@ -20,10 +21,16 @@ var WordCloud = function(container, titleText, lines, colorRange){
     var chart = new Highcharts.chart({
       chart: {
         type: "wordcloud",
-        renderTo: container
+        renderTo: container,
+        marginBottom: 100,
+        backgroundColor: '#F4F4F8'
+
       },
       title: {
         text: titleText
+      },
+      credits: {
+      enabled: false
       },
       series: [{
         data: seriesData,
