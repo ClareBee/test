@@ -40,7 +40,7 @@ var populateDisplay = function(forecast){
 
   var country = document.getElementById("country-name");
   country.innerText = forecast.parent.title;
-  
+
 
   var mymap = L.map('main-map').setView([51.505, -0.09], 13);
   var location = forecast.latt_long;
@@ -126,8 +126,14 @@ var populateWordCloud = function(forecast){
   });
   var wordcontainer = document.querySelector("#word-cloud");
   var title = "";
-  var wordcloud = new WordCloud(wordcontainer, title, forecastString);
+  var colorRange = [];
+  if(forecast.consolidated_weather[0].weather_state_name.match(/un/)){
+      colorRange = ['#FDB833', '#FED766', '#FE5F55'];
+  } else {
+    colorRange = ['#1D84B5', '#34F6F2', '#7D84B2'];
   }
+  var wordcloud = new WordCloud(wordcontainer, title, forecastString, colorRange);
+}
 
 var handleButton = function(){
   var choice = document.getElementById("city-input");

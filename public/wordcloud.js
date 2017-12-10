@@ -1,4 +1,4 @@
-var WordCloud = function(container, titleText, lines){
+var WordCloud = function(container, titleText, lines, colorRange){
 
   var seriesData = Highcharts.reduce(lines, function (arr, word) {
     var obj = Highcharts.find(arr, function (obj) {
@@ -28,7 +28,7 @@ var WordCloud = function(container, titleText, lines){
       series: [{
         data: seriesData,
         colorByPoint: true,
-        colors:['#1D84B5', '#34F6F2', '#7D84B2']
+        colors: colorRange
       }]
     });
 }
