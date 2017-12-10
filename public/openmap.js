@@ -7,7 +7,7 @@ var OpenMap = L.Class.extend({
         L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
-    }
+    },
 
 });
 OpenMap.include({
@@ -25,12 +25,12 @@ OpenMap.include({
   });
 },
 
-  movemap: function(coords){
-    var lat = coords.split('')[0]
-    var long = coords.split('')[1]
-    map.setView(lat, long, 13);
-    // map.panTo(new L.LatLng(lat, long));
-  }
+  // movemap: function(coords){
+  //   var lat = coords.split('')[0]
+  //   var long = coords.split('')[1]
+  //   var coords = new L.LatLng(lat, long);
+  //   map.panTo(coords, 13);
+  // }
 });
 
 // var OpenMap = function(container){
@@ -47,12 +47,12 @@ OpenMap.include({
 //   });
 // }
 
-OpenMap.prototype.addMarker = function(lat, lng, text, mymap){
-  L.marker([lat, lng]).addTo(mymap)
-    .bindPopup(text)
-    .openPopup();
-}
-
-OpenMap.prototype.moveMap = function(){
-  mymap.panTo(new L.LatLng(40.737, -73.923));
-}
+// OpenMap.prototype.addMarker = function(lat, lng, text, mymap){
+//   L.marker([lat, lng]).addTo(mymap)
+//     .bindPopup(text)
+//     .openPopup();
+// }
+//
+// OpenMap.prototype.moveMap = function(){
+//   mymap.panTo(new L.LatLng(40.737, -73.923));
+// }

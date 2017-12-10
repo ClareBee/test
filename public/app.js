@@ -30,24 +30,30 @@ var populateDisplay = function(forecast){
   var time = document.getElementById("time");
   var weather = document.getElementById("weather-today");
   var selected = forecast.consolidated_weather[0];
+  var temp = document.getElementById("temp-today");
+
   city.innerText = forecast.title;
   time.innerText = forecast.time;
   weather.innerText = selected.weather_state_name;
-  var temp = document.getElementById("temp-today");
   temp.innerText = `${selected.max_temp.toFixed(2)} \u2103 max, ${selected.min_temp.toFixed(2)} \u2103 min`;
+
   imageChoice(selected);
+
   var country = document.createElement('ul');
   country.innerText = forecast.parent.title;
   temp.appendChild(country);
+//should update the map when another http request is run after a new location is selected
   var map = document.getElementById("main-map");
-  map.movemap(forecast.latt_long);
+//says that this is not a function - the map is just the html element, so how do i change the view?
+//if it try and new it up again, it says 'map container is already initialized'
+//  map.movemap(forecast.latt_long);
 }
 
 var imageChoice = function(forecast){
   var image = document.getElementById("image-weather-today");
   var weather = forecast.weather_state_name;
   console.log(weather);
-  if(weather.match(/ow/))
+  if(weather.match(/ow/) || weather.match(/leet/))
       {image.src = "/snow.jpg";}
   else if(weather.match(/ind/)){
       image.src = "/windy.jpg";
@@ -62,6 +68,7 @@ var imageChoice = function(forecast){
        image.src = "/lightrain.jpg";
   }
   else {
+    //default image
       image.src = "/tea.jpg";
   }
   // switch(weather){
