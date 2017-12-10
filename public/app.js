@@ -49,7 +49,10 @@ var populateDisplay = function(forecast){
   console.log(lat);
   var coords = new L.LatLng(lat, long);
   console.log(coords);
-  mymap.panTo(coords);
+  mymap.setView(coords, 13);
+  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(mymap);
   var select = document.getElementById("city-input");
   select.addEventListener('change', function(){
     mymap.remove();
