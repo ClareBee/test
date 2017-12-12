@@ -35,28 +35,11 @@ var requestComplete = function(){
   var forecast = JSON.parse(jsonString);
   populateDisplay(forecast);
   populateWordCloud(forecast);
+  setBackground(forecast);
   console.log(forecast);
 };
 
 var populateDisplay = function(forecast){
-  var user = localStorage.getItem('userName');
-  var preference = localStorage.getItem('weather');
-  var greeting = document.getElementById('message');
-  var frame = document.getElementById('greet');
-
-
-  frame.style.border = "3px solid black";
-  frame.style.borderRadius = "2px";
-  frame.style.padding = "10px";
-  greeting.style.color = "#545456";
-  greeting.style.lineHeight = '1.5em';
-  greeting.style.fontFamily = 'Archivo Black';
-  greeting.innerText = `Hey, ${user}! \n So, you like ${preference.toLowerCase()} weather? Me too! \n \n Check out today's forecast... \n Then scroll down and explore weather around the world!`;
-
-  var chat = document.getElementById("talking");
-  chat.style.display = "inline-block";
-  chat.src = "images/talking.jpg";
-
   var city = document.getElementById("city-name");
   var country = document.getElementById("country-name");
   var time = document.getElementById("time");
@@ -190,5 +173,39 @@ var handleButton = function(){
   makeRequest(url, requestComplete);
 }
 
+var setBackground = function(forecast){
+  var user = localStorage.getItem('userName');
+  var preference = localStorage.getItem('weather');
+  var greeting = document.getElementById('message');
+  var frame = document.getElementById('greet');
+
+  frame.style.border = "3px solid black";
+  frame.style.borderRadius = "2px";
+  frame.style.padding = "10px";
+  greeting.style.color = "#545456";
+  greeting.style.lineHeight = '1.5em';
+  greeting.style.fontFamily = 'Archivo Black';
+  greeting.innerText = `Hey, ${user}! \n So, you like ${preference.toLowerCase()} weather? Me too! \n `;
+  var outcome = document.createElement('p');
+  greeting.appendChild(outcome);
+  var chat = document.getElementById("talking");
+  chat.style.display = "inline-block";
+  chat.src = "images/talking.jpg";
+  var message = document.getElementById("greet");
+    if(forecast.consolidated_weather[0].weather_state_name.match(/[^h]un/) && ((preference === "Sunny") || (preference === "Bright and breezy"))){
+    message.style.backgroundColor = "#FEE9AB";
+    outcome.innerText = "Well, great news! Today it's looking sunny!";
+  } else if(!forecast.consolidated_weather[0].weather_state_name.match(/[^h]un/) && !((preference === "Sunny") || (preference === "Bright and breezy"))){
+    message.style.backgroundColor = "#ACD2E4";
+    outcome.innerText = "Well, great news! Today isn't sunny!";
+  } else {
+    message.style.backgroundColor = "#ACD2E4";
+    outcome.innerText = "Unfortunately, today isn't all that sunny!"
+  }
+  greeting.appendChild(outcome);
+  var nextStep = document.createElement('p');
+  nextStep.innerText = "Why not check out the forecast? \n Then scroll down and explore the weather round the world...";
+  greeting.appendChild(nextStep);
+}
 
 window.addEventListener('load', app);
