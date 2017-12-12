@@ -192,15 +192,16 @@ var setBackground = function(forecast){
   chat.style.display = "inline-block";
   chat.src = "images/talking.jpg";
   var message = document.getElementById("greet");
-    if(forecast.consolidated_weather[0].weather_state_name.match(/[^h]un/) && ((preference === "Sunny") || (preference === "Bright and breezy"))){
+  var todayweather = forecast.consolidated_weather[0].weather_state_name
+    if(todayweather.match(/[^h]un/) && ((preference === "Sunny") || (preference === "Bright and breezy"))){
     message.style.backgroundColor = "#FEE9AB";
-    outcome.innerText = "Well, great news! Today it's looking sunny!";
-  } else if(!forecast.consolidated_weather[0].weather_state_name.match(/[^h]un/) && !((preference === "Sunny") || (preference === "Bright and breezy"))){
+    outcome.innerText = "Well, great news! Today it's looking sunny out there!";
+  } else if(!todayweather.match(/[^h]un/) && !((preference === "Sunny") || (preference === "Bright and breezy"))){
     message.style.backgroundColor = "#ACD2E4";
-    outcome.innerText = "Well, great news! Today isn't sunny!";
+    outcome.innerText = `Well, it's ${todayweather.toLowerCase()} today, so at least it isn't too sunny!`;
   } else {
     message.style.backgroundColor = "#ACD2E4";
-    outcome.innerText = "Unfortunately, today isn't all that sunny!"
+    outcome.innerText = `Sorry, it's ${todayweather.toLowerCase()} today - doesn't look like the sun's out today!`;
   }
   greeting.appendChild(outcome);
   var nextStep = document.createElement('p');
