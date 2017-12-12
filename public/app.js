@@ -36,6 +36,8 @@ var requestComplete = function(){
   populateDisplay(forecast);
   populateWordCloud(forecast);
   setBackground(forecast);
+  imageChoice(forecast.consolidated_weather[0]);
+  soundChoice(forecast.consolidated_weather[0]);
   console.log(forecast);
 };
 
@@ -55,9 +57,6 @@ var populateDisplay = function(forecast){
   time.innerText = newtime;
   weather.innerText = selected.weather_state_name;
   tempmax.innerText = `${selected.max_temp.toFixed(2)} \u2103 max`; tempmin.innerText = `${selected.min_temp.toFixed(2)} \u2103 min`;
-
-  imageChoice(selected);
-  soundChoice(selected);
 
   var label = document.getElementById('city-label');
   label.style.display = "inline-block";
@@ -201,7 +200,7 @@ var setBackground = function(forecast){
     outcome.innerText = `Well, it's ${todayweather.toLowerCase()} today, so at least it isn't too sunny!`;
   } else {
     message.style.backgroundColor = "#ACD2E4";
-    outcome.innerText = `Sorry, it's ${todayweather.toLowerCase()} today - doesn't look like the sun's out today!`;
+    outcome.innerText = `Sorry, it's ${todayweather.toLowerCase()} today - doesn't look too bright out there!`;
   }
   greeting.appendChild(outcome);
   var nextStep = document.createElement('p');
