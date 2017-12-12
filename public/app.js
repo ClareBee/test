@@ -1,26 +1,26 @@
 var app = function(){
 
-
-
-var btn = document.getElementById('get-weather');
-
-btn.addEventListener('click', function(){
+  var btn = document.getElementById('get-weather');
+  btn.addEventListener('click', function(){
 
   var user = document.getElementById('name').value;
   localStorage.setItem('userName', user);
+
   var preferred = document.getElementById("preferred-weather");
   var chosen = preferred.options[preferred.selectedIndex].value;
   localStorage.setItem('weather', chosen);
   var list = document.getElementById('question-list');
   list.style.display = "none";
+
   var url = "https://www.metaweather.com/api/location/21125/";
   makeRequest(url, requestComplete);
+
   }.bind(this)
   );
-  window.onbeforeunload = function () {
+  window.onbeforeunload = function() {
   window.scrollTo(0, 0);
-}
-}
+  }
+};
 
 var makeRequest = function(url, callback){
   var request = new XMLHttpRequest();
@@ -42,18 +42,23 @@ var populateDisplay = function(forecast){
   var user = localStorage.getItem('userName');
   var preference = localStorage.getItem('weather');
   var greeting = document.getElementById('message');
-  greeting.style.color = "#545456";
-  greeting.style.lineHeight = '1.5em';
   var frame = document.getElementById('greet');
+
+
   frame.style.border = "3px solid black";
   frame.style.borderRadius = "2px";
   frame.style.padding = "10px";
+  greeting.style.color = "#545456";
+  greeting.style.lineHeight = '1.5em';
   greeting.style.fontFamily = 'Archivo Black';
   greeting.innerText = `Hey, ${user}! \n So, you like ${preference.toLowerCase()} weather? Me too! \n \n Check out today's forecast... \n Then scroll down and explore weather around the world!`;
+
   var chat = document.getElementById("talking");
   chat.style.display = "inline-block";
   chat.src = "images/talking.jpg";
+
   var city = document.getElementById("city-name");
+  var country = document.getElementById("country-name");
   var time = document.getElementById("time");
   var weather = document.getElementById("weather-today");
   var selected = forecast.consolidated_weather[0];
@@ -61,8 +66,9 @@ var populateDisplay = function(forecast){
   var tempmin = document.getElementById("temp-min");
 
   city.innerText = forecast.title;
-  var newtime = moment(forecast.time).format('MMMM Do YYYY, h:mm:ss a');
+  country.innerText = forecast.parent.title;
 
+  var newtime = moment(forecast.time).format('MMMM Do YYYY, h:mm:ss a');
   time.innerText = newtime;
   weather.innerText = selected.weather_state_name;
   tempmax.innerText = `${selected.max_temp.toFixed(2)} \u2103 max`; tempmin.innerText = `${selected.min_temp.toFixed(2)} \u2103 min`;
@@ -74,28 +80,33 @@ var populateDisplay = function(forecast){
   label.style.display = "inline-block";
   label.style.border = "5px solid #1D84B5";
 
-  var country = document.getElementById("country-name");
-  country.innerText = forecast.parent.title;
+//map set up
   var mapContainer = document.getElementById("main-map");
   mapContainer.style.border = "10px solid  #FED766";
   mapContainer.style.borderRadius = "8px";
+
   var mymap = L.map(mapContainer).setView([54.0730, 2.2898], 15);
   L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(mymap);
+
+//calculate the coordinates from the HTTP request
   var location = forecast.latt_long;
   var lat = location.split(',')[0]
   var long = location.split(',')[1]
   console.log(lat);
   var coords = new L.LatLng(lat, long);
   console.log(coords);
-  //i want to use flyTo(coords)
+
+//an issue here with delay loading - if solved, changed to flyTo()
   mymap.panTo(coords);
   L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(mymap);
   var marker = L.marker(coords).addTo(mymap);
   marker.bindPopup(`Today in ${forecast.title} the weather is: ${selected.weather_state_name.toLowerCase()}`).openPopup();
+
+//get the new location from the dropdown of locations
   var select = document.getElementById("city-input");
   select.addEventListener('change', function(){
     //clears out the container for reuse
@@ -125,6 +136,7 @@ var soundChoice = function(forecast){
 var imageChoice = function(forecast){
   var image = document.getElementById("image-weather-today");
   image.style.display = "block";
+
   var weather = forecast.weather_state_name;
   console.log(weather);
   if(weather.match(/[^h]ow/) || weather.match(/leet/) || weather.match(/ail/))
@@ -151,23 +163,6 @@ var imageChoice = function(forecast){
     //default image
       image.src = "images/tea.jpg";
   }
-  //why doesn't this work?
-  // switch(weather){
-  // case (weather.match(/ind/):
-  //     image.src = "/windy.jpg";
-  //     break;
-  // case weather.match(/eavy/):
-  //     image.src = "/heavyshower.jpg";
-  //     break;
-  // case weather.match(/[^h]ain/):
-  //     image.src = "/lightrain.jpg";
-  // case weather.match(/now/):
-  //     image.src = "/snow.jpg";
-  //     break;
-  // case weather.match(/un/):
-  //     image.src = "/sun.jpg";
-  //     break;
-  //   }
 }
 
 var populateWordCloud = function(forecast){
