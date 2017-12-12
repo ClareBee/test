@@ -61,7 +61,9 @@ var populateDisplay = function(forecast){
   var tempmin = document.getElementById("temp-min");
 
   city.innerText = forecast.title;
-  time.innerText = forecast.time;
+  var newtime = moment(forecast.time).format('MMMM Do YYYY, h:mm:ss a');
+
+  time.innerText = newtime;
   weather.innerText = selected.weather_state_name;
   tempmax.innerText = `${selected.max_temp.toFixed(2)} \u2103 max`; tempmin.innerText = `${selected.min_temp.toFixed(2)} \u2103 min`;
 
