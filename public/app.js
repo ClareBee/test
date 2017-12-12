@@ -74,8 +74,8 @@ var populateDisplay = function(forecast){
 
 //calculate the coordinates from the HTTP request
   var location = forecast.latt_long;
-  var lat = location.split(',')[0]
-  var long = location.split(',')[1]
+  var lat = location.split(',')[0];
+  var long = location.split(',')[1];
   console.log(lat);
   var coords = new L.LatLng(lat, long);
   console.log(coords);
@@ -90,6 +90,7 @@ var populateDisplay = function(forecast){
 
 //get the new location from the dropdown of locations
   var select = document.getElementById("city-input");
+
   select.addEventListener('change', function(){
     //clears out the container for reuse
     mymap.remove();
