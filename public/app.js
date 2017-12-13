@@ -193,9 +193,9 @@ var setBackground = function(forecast){
   chat.src = "images/talking.jpg";
   var message = document.getElementById("greet");
   var todayweather = forecast.consolidated_weather[0].weather_state_name
-    if(todayweather.match(/[^h]un/) && ((preference === "Sunny") || (preference === "Bright and breezy"))){
+    if((todayweather.match(/[^h]un/))||(todayweather.match(/lear/)) && ((preference === "Sunny") || (preference === "Bright and breezy"))){
     message.style.backgroundColor = "#FEE9AB";
-    outcome.innerText = "Well, great news! Today it's looking sunny out there!";
+    outcome.innerText = "Well, great news! Today it's looking pretty sunny out there!";
   } else if(!todayweather.match(/[^h]un/) && !((preference === "Sunny") || (preference === "Bright and breezy"))){
     message.style.backgroundColor = "#ACD2E4";
     outcome.innerText = `Well, it's ${todayweather.toLowerCase()} today, so at least it isn't too sunny!`;
