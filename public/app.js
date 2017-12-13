@@ -130,7 +130,7 @@ var imageChoice = function(forecast){
   else if(weather.match(/hund/)){
     image.src = "images/thunder.jpg";
   }
-  else if(weather.match(/[^h]un/)){
+  else if((weather.match(/[^h]un/)) || (weather.match(/lear/))){
       image.src = "images/sun.jpg";
   }
   else if(weather.match(/loud/)){
@@ -156,7 +156,7 @@ var populateWordCloud = function(forecast){
   var wordcontainer = document.querySelector("#word-cloud");
   var title = "";
   var colorRange = [];
-  if(forecast.consolidated_weather[0].weather_state_name.match(/[^h]un/)){
+  if((forecast.consolidated_weather[0].weather_state_name.match(/[^h]un/)) || (forecast.consolidated_weather[0].weather_state_name.match(/lear/))){
       colorRange = ['#FDB833', '#FED766', '#FE5F55'];
   } else {
     colorRange = ['#1D84B5', '#34F6F2', '#7D84B2'];

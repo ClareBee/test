@@ -108,14 +108,14 @@ h2, h3, h4, p, select, label {
 }
 
 #image-weather-today {
-  width: 180px;
-  height: 180px;
+  width: 200px;
+  height: 200px;
 }
 
 #word-cloud {
 	min-width: 200px;
 	max-width: 300px;
-  height: 300px;
+  height: 400px;
 	margin: 0 auto;
 }
 
@@ -140,7 +140,7 @@ h2, h3, h4, p, select, label {
   display: flex;
   justify-content: flex-start;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
 }
 .container#display {
   display: flex;
