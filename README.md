@@ -1,3 +1,5 @@
+![image](weatherapp.png)
+
 # weatherApp
 ## Express App using MetaWeather, Open Street Maps, Leaflet and Highcharts 
 
